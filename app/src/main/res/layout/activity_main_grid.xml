@@ -6,7 +6,6 @@
     android:layout_gravity="fill"
     android:layout_height="match_parent">
 
-
     <TextView android:id="@+id/text1"
         android:text="@string/textview"
         android:textSize="30dp"
@@ -19,11 +18,13 @@
     <Button android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button1"
+
         />
 
     <CheckBox android:id="@+id/checkbox"
         android:text="@string/checkbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         />
 
     <ImageButton
@@ -32,7 +33,7 @@
         android:layout_height="wrap_content"
         />
     <Switch
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/swith"
         />
