@@ -1,5 +1,6 @@
 package com.example.fall2019;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -11,26 +12,45 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        setContentView(R.layout.activity_main_linear);
+        //setContentView(R.layout.activity_main);
+        //setContentView(R.layout.activity_main_form);
+//        setContentView(R.layout.activity_main_linear);
+        //setContentView(R.layout.activity_main_grid);
         setContentView(R.layout.activity_main_grid);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        Button loginButton = findViewById(R.id.button_form);
+        SharedPreferences prefs = getSharedPreferences("FileName", MODE_PRIVATE);
+        String emails = prefs.getString("Email", " ");
+        TextView email = findViewById(R.id.text_form1);
+
+
+        /*fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+
             }
-        });
+        });*/
+
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+
     }
 
     @Override

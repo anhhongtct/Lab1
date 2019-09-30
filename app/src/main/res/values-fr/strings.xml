@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Fall2019</string>
+    <string name="action_settings">fdsafds</string>
+    <string name="hello_message">Hello World!</string>
+    <string name="textview">fdsafdsfdsfafdsI</string>
+    <string name="checkbox">fdsafdsafdsfdsa</string>
+    <string name="swith">Switch On/Off</string>
+    <string name="button1">Click here</string>
+    <string name="edit_text">Type here</string>
+    <string name="input_type">fdsafdsafds</string>
+    <string name="text_form1">fdsafdsfa </string>
+    <string name="text_form2">gfdsgfdsgfd</string>
+    <string name="edit_form1">jklfdj </string>
+    <string name="button_form"> Login </string>
+</resources>

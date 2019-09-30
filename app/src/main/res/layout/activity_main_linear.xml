@@ -30,6 +30,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/checkbox"
+        />
+
         <!-- android:orientation="horizontal"
         android:layout_weight="1"
         android:gravity="fill" -->
@@ -46,7 +48,6 @@
         android:layout_height="wrap_content"
         />
 
-
     <Switch
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -56,7 +57,7 @@
 
     <EditText android:id="@+id/text2"
         android:hint="@string/edit_text"
-        android:inputType="@string/input_type"
+        android:inputType="textPersonName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />

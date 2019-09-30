@@ -8,5 +8,9 @@
     <string name="button1">Click here</string>
     <string name="edit_text">Type here</string>
     <string name="input_type">textPersonalName</string>
+    <string name="text_form1">Enter your email address: </string>
+    <string name="text_form2">Type your password: </string>
+    <string name="edit_form1">Type email here: </string>
+    <string name="button_form"> Login </string>
 
 </resources>
