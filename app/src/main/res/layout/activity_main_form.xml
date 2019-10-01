@@ -8,20 +8,24 @@
         android:text="@string/text_form1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
         />
 
-    <EditText android:id="@+id/edit_form1"
-        android:hint="@string/edit_form1"
-        android:inputType="@string/input_type"
+    <EditText
+        android:id="@+id/edit_form1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+        android:layout_height="72dp"
+        android:hint="@string/edit_form1"
+        android:inputType="textEmailAddress" />
     <TextView android:id="@+id/text_form2"
         android:text="@string/text_form2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        />
+
+    <EditText android:id="@+id/edit_form2"
         android:inputType="textPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         />
     <Button android:id="@+id/button_form"
         android:text="@string/button_form"
