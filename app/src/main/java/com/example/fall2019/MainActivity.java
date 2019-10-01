@@ -13,65 +13,31 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private SharedPreferences mPrefs;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_main);
-        //setContentView(R.layout.activity_main_form);
-//        setContentView(R.layout.activity_main_linear);
-        //setContentView(R.layout.activity_main_grid);
-        setContentView(R.layout.activity_main_grid);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
-        Button loginButton = findViewById(R.id.button_form);
-        SharedPreferences prefs = getSharedPreferences("FileName", MODE_PRIVATE);
-        String emails = prefs.getString("Email", " ");
-        TextView email = findViewById(R.id.text_form1);
+        setContentView(R.layout.activity_main_form);
 
-
-        /*fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-
-            }
-        });*/
-
+        EditText edit1 = findViewById(R.id.edit_form1);
+        edit1.setHint(mPrefs.getString("ReserveName", ""));
     }
-
 
     @Override
     protected void onPause() {
         super.onPause();
-
+        EditText edit1 = findViewById(R.id.edit_form1);
+         SharedPreferences mPrefs = getSharedPreferences("Email", MODE_PRIVATE);
+        SharedPreferences.Editor editor = mPrefs.edit();
+        editor.putString("ReserveName", edit1.getText().toString());
+        editor.commit();
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

@@ -12,5 +12,12 @@
     <string name="text_form2">Type your password: </string>
     <string name="edit_form1">Type email here: </string>
     <string name="button_form"> Login </string>
+    <string name="text_form21"> Your profile </string>
+    <string name="text_form22"> Your name </string>
+    <string name="text_form23"> Your email </string>
+    <string name="text_form24"> Your picture </string>
+    <string name="text_form25"> Click the button above to take a picture </string>
+
+
 
 </resources>
