@@ -10,12 +10,12 @@
     <string name="edit_text">Type here</string>
     <string name="input_type">fdsafdsafds</string>
     <string name="text_form1">fdsafdsfa </string>
-    <string name="text_form2">gfdsgfdsgfd</string>
-    <string name="edit_form1">jklfdj </string>
-    <string name="button_form"> Login </string>
-    <string name="text_form21"> Your profile </string>
-    <string name="text_form22"> Your name </string>
-    <string name="text_form23"> Your email </string>
-    <string name="text_form24"> Your picture </string>
-    <string name="text_form25"> Click the button above to take a picture </string>
+    <string name="text_form2"> Tapez votre mot de passe </string>
+    <string name="edit_form1"> Tapez email ici </string>
+    <string name="button_form"> Identifier </string>
+    <string name="text_form21"> Votre profil </string>
+    <string name="text_form22"> Votre nom </string>
+    <string name="text_form23"> Votre email </string>
+    <string name="text_form24"> Ta photo </string>
+    <string name="text_form25"> Cliquez sur le bouton ci-dessus pour prendre une photo </string>
 </resources>
