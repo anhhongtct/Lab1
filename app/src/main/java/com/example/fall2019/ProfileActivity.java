@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -21,6 +22,13 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_form2);
         mImageButton = findViewById(R.id.button_form2);
         EditText emailText = findViewById(R.id.edit_form22);
+        Button chatButton = findViewById(R.id.button2_form2);
+        chatButton.setOnClickListener(clk -> {
+            Intent chatIntent = new Intent(this, ChatRoomActivity.class);
+        startActivity(chatIntent); }
+        );
+
+
 
         Intent previousMess = getIntent();
         String emailSent = previousMess.getStringExtra("email");
