@@ -32,19 +32,19 @@ public class ChatRoomActivity extends AppCompatActivity{
         Button sendButton = findViewById(R.id.button1_chat);
         Button recieveButton = findViewById(R.id.button2_chat);
         EditText chatText = findViewById(R.id.edit_chat);
-        theList.setAdapter( myAdapter = new MyListAdapter() );
-
+        theList.setAdapter( myAdapter = new MyListAdapter());
         sendButton.setOnClickListener(clk -> {
             message.add(new Message(chatText.getText().toString(), true));
-            chatText.setText("");
             myAdapter.notifyDataSetChanged();
+            chatText.setText("");
         });
 
         recieveButton.setOnClickListener(clk -> {
             message.add(new Message(chatText.getText().toString(), false));
-            chatText.setText("");
             myAdapter.notifyDataSetChanged();
+            chatText.setText("");
         });
+
     }
     public class Message {
         String mess;
@@ -72,27 +72,25 @@ public class ChatRoomActivity extends AppCompatActivity{
         }
 
         @Override
-        public Object getItem(int position) {
+        public Message getItem(int position) {
             return message.get(position);
         }
 
         @Override
         public View getView(int position, View messView, ViewGroup parent) {
             View thisRow = messView;
-            if(messView == null) {
-                if (message.get(position).getSOR()) {
+           if (getItem(position).getSOR()) {
                 thisRow = getLayoutInflater().inflate(R.layout.send_row, null);
                     ImageButton sendImg = thisRow.findViewById(R.id.sendImg);
                     TextView sendText = thisRow.findViewById(R.id.sendText);
-                    sendText.setText(message.get(position).getMessage());
+                    sendText.setText(getItem(position).getMessage());
                 }
-                else {
+                    else if(!getItem(position).getSOR()) {
                     thisRow = getLayoutInflater().inflate(R.layout.receive_row, null);
                     ImageButton recImg = thisRow.findViewById(R.id.recImg);
                     TextView recText = thisRow.findViewById(R.id.recText);
-                    recText.setText(message.get(position).getMessage());
+                    recText.setText(getItem(position).getMessage());
                 }
-            }
             return thisRow;
         }
 
