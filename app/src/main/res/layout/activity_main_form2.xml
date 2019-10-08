@@ -48,5 +48,12 @@
         android:layout_height="wrap_content"
         />
 
+    <Button android:id="@+id/button2_form2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Go to chat"
+        android:src="@android:drawable/picture_frame"
+        />
+
 
 </LinearLayout>
