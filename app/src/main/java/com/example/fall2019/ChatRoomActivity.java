@@ -7,10 +7,12 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.Layout;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.Button;
@@ -34,15 +36,28 @@ public class ChatRoomActivity extends AppCompatActivity{
         EditText chatText = findViewById(R.id.edit_chat);
         theList.setAdapter( myAdapter = new MyListAdapter());
         sendButton.setOnClickListener(clk -> {
-            message.add(new Message(chatText.getText().toString(), true));
-            myAdapter.notifyDataSetChanged();
-            chatText.setText("");
+            if(!TextUtils.isEmpty(chatText.getText())) {
+                message.add(new Message(chatText.getText().toString(), true));
+                myAdapter.notifyDataSetChanged();
+                chatText.setText("");
+            }
+            InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+            if(imm.isAcceptingText()) { // verify if the soft keyboard is open
+                imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+            }
         });
 
         recieveButton.setOnClickListener(clk -> {
-            message.add(new Message(chatText.getText().toString(), false));
-            myAdapter.notifyDataSetChanged();
-            chatText.setText("");
+            if (!TextUtils.isEmpty(chatText.getText())) {
+                message.add(new Message(chatText.getText().toString(), false));
+                myAdapter.notifyDataSetChanged();
+                chatText.setText("");
+            }
+
+            InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+            if(imm.isAcceptingText()) { // verify if the soft keyboard is open
+                imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+            }
         });
 
     }
@@ -79,18 +94,18 @@ public class ChatRoomActivity extends AppCompatActivity{
         @Override
         public View getView(int position, View messView, ViewGroup parent) {
             View thisRow = messView;
-           if (getItem(position).getSOR()) {
+            if (getItem(position).getSOR()) {
                 thisRow = getLayoutInflater().inflate(R.layout.send_row, null);
-                    ImageButton sendImg = thisRow.findViewById(R.id.sendImg);
-                    TextView sendText = thisRow.findViewById(R.id.sendText);
-                    sendText.setText(getItem(position).getMessage());
-                }
-                    else if(!getItem(position).getSOR()) {
-                    thisRow = getLayoutInflater().inflate(R.layout.receive_row, null);
-                    ImageButton recImg = thisRow.findViewById(R.id.recImg);
-                    TextView recText = thisRow.findViewById(R.id.recText);
-                    recText.setText(getItem(position).getMessage());
-                }
+                ImageButton sendImg = thisRow.findViewById(R.id.sendImg);
+                TextView sendText = thisRow.findViewById(R.id.sendText);
+                sendText.setText(getItem(position).getMessage());
+            }
+            else if(!getItem(position).getSOR()) {
+                thisRow = getLayoutInflater().inflate(R.layout.receive_row, null);
+                ImageButton recImg = thisRow.findViewById(R.id.recImg);
+                TextView recText = thisRow.findViewById(R.id.recText);
+                recText.setText(getItem(position).getMessage());
+            }
             return thisRow;
         }
 
