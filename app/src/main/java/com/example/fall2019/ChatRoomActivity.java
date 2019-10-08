@@ -39,8 +39,6 @@ public class ChatRoomActivity extends AppCompatActivity{
 
 
 
-
-
     public class Message extends BaseAdapter {
         @Override
         public int getCount() {
@@ -53,7 +51,13 @@ public class ChatRoomActivity extends AppCompatActivity{
         }
 
         @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
+        public View getView(int position, View messView, ViewGroup parent) {
+            View thisRow = messView;
+            if(messView == null) {
+                if (true) {
+                thisRow = getLayoutInflater().inflate(R.layout.send_row, null);}
+                else thisRow =  getLayoutInflater().inflate(R.layout.receive_row_row, null);
+            }
             LayoutInflater inflater = getLayoutInflater();
             View newView = inflater.inflate()
             return null;
