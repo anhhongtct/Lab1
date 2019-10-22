@@ -6,10 +6,10 @@
     <string name="textview">fdsafdsfdsfafdsI</string>
     <string name="checkbox">fdsafdsafdsfdsa</string>
     <string name="swith">Switch On/Off</string>
-    <string name="button1">Click here</string>
-    <string name="edit_text">Type here</string>
+    <string name="button1">Cliquez ici</string>
+    <string name="edit_text"> Écrivez ici </string>
     <string name="input_type">fdsafdsafds</string>
-    <string name="text_form1">fdsafdsfa </string>
+    <string name="text_form1"> Entrez votre adresse email </string>
     <string name="text_form2"> Tapez votre mot de passe </string>
     <string name="edit_form1"> Tapez email ici </string>
     <string name="button_form"> Identifier </string>
@@ -18,4 +18,7 @@
     <string name="text_form23"> Votre email </string>
     <string name="text_form24"> Ta photo </string>
     <string name="text_form25"> Cliquez sur le bouton ci-dessus pour prendre une photo </string>
+    <string name="send_test"> Envoyer </string>
+    <string name="rec_test"> Recevoir </string>
+    <string name="go_chat"> Aller discuter </string>
 </resources>

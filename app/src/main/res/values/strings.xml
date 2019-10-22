@@ -17,6 +17,9 @@
     <string name="text_form23"> Enter your email </string>
     <string name="text_form24"> Your picture </string>
     <string name="text_form25"> Click the button above to take a picture </string>
+    <string name="send_test"> Send </string>
+    <string name="rec_test"> Receive </string>
+    <string name="go_chat"> Go to chat </string>
 
 
 </resources>

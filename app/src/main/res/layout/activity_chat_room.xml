@@ -7,9 +7,11 @@
 
     <ListView
         android:id="@+id/theList"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:stackFromBottom="true"
         android:layout_weight="1"
+        android:transcriptMode="alwaysScroll"
        />
 
         <LinearLayout
@@ -22,7 +24,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Send"/>
+                android:text="@string/send_test"/>
 
             <EditText
                 android:id="@+id/edit_chat"
@@ -35,7 +37,7 @@
                 android:id="@+id/button2_chat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Receive"
+                android:text="@string/rec_test"
                 android:layout_weight="1"/>
 
         </LinearLayout>
