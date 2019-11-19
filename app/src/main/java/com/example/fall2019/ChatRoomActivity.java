@@ -95,7 +95,7 @@ public class ChatRoomActivity extends AppCompatActivity{
                 imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
             }
         });
-        myAdapter.notifyDataSetChanged();
+        //myAdapter.notifyDataSetChanged();
         recieveButton.setOnClickListener(clk -> {
             if (!TextUtils.isEmpty(chatText.getText())) {
                 newValues.put(MyDatabaseOpenHelper.COL_MESSAGE, chatText.getText().toString());
@@ -138,9 +138,7 @@ public class ChatRoomActivity extends AppCompatActivity{
             String mess = c.getString(1);
             String send = c.getString(2);
             Log.e(ACTIVITY_NAME, "Row: " + c.getPosition() + " Message: " + mess + " Send: " + send);
-
         }
-
     }
 
 

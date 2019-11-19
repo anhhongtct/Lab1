@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/icon1"
+        android:title="icon1"
+        android:icon="@drawable/icons_home"
+        android:orderInCategory="100"
+        app:showAsAction="always"/>
+
+    <item android:id="@+id/icon2"
+        android:title="icon2"
+        android:icon="@drawable/icons_instagram"
+        android:orderInCategory="100"
+        app:showAsAction="always"/>
+    <item android:id="@+id/icon3"
+        android:title="icon3"
+        android:icon="@drawable/icons_reddit"
+        android:orderInCategory="100"
+        app:showAsAction="always"/>
+
+    <item android:id="@+id/search_item"
+        app:showAsAction="never"
+        android:title="Overflow menu"/>
+</menu>

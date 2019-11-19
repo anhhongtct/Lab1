@@ -14,21 +14,34 @@ import android.widget.ImageButton;
 public class ProfileActivity extends AppCompatActivity {
     static final int REQUEST_IMAGE_CAPTURE = 1;
     public static final String ACTIVITY_NAME = "PROFILE_ACTIVITY";
+
+    //Button to go to Weather forecast
     static ImageButton mImageButton;
+    Button weatherButton;
+    Button toolbarButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_form2);
         mImageButton = findViewById(R.id.button_form2);
+        weatherButton = (Button)findViewById(R.id.weather_button);
+        toolbarButton = findViewById(R.id.toolbar_button);
+
         EditText emailText = findViewById(R.id.edit_form22);
         Button chatButton = findViewById(R.id.button2_form2);
         chatButton.setOnClickListener(clk -> {
             Intent chatIntent = new Intent(this, ChatRoomActivity.class);
         startActivity(chatIntent); }
         );
-
-
+        weatherButton.setOnClickListener(clk -> {
+            Intent weatherIntent = new Intent(this, WeatherForecast.class);
+            startActivity(weatherIntent); }
+        );
+        toolbarButton.setOnClickListener(clk -> {
+            Intent toolbarIntent = new Intent(this,TestToolBar.class);
+            startActivity(toolbarIntent); }
+        );
 
         Intent previousMess = getIntent();
         String emailSent = previousMess.getStringExtra("email");
