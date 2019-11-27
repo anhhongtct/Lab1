@@ -20,6 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".EmptyActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".ChatRoomActivity" />
         <activity android:name=".WeatherForecast" />

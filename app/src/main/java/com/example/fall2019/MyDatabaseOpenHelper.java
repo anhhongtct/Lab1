@@ -49,4 +49,10 @@ public class MyDatabaseOpenHelper extends SQLiteOpenHelper {
         //Create a new table:
         onCreate(db);
     }
+
+    public void deleteMess (String id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_NAME, COL_ID + " =? ", new String[] { id });
+        db.close();
+    }
 }

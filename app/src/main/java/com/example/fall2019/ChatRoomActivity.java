@@ -8,23 +8,19 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.text.Layout;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.Button;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-
+import android.widget.Toast;
 import java.util.ArrayList;
 
 public class ChatRoomActivity extends AppCompatActivity{
@@ -41,14 +37,51 @@ public class ChatRoomActivity extends AppCompatActivity{
         setContentView(R.layout.activity_chat_room);
 
         //List view
-        ListView theList =findViewById(R.id.theList);
+        ListView theList = findViewById(R.id.theList);
+
         // set the adapter for list view
         theList.setAdapter( myAdapter = new MyListAdapter());
 
+        boolean isTablet = findViewById(R.id.fragmentLocation) != null;
+
+        theList.setOnItemClickListener( (list, item, position, id) -> {
+            String title = message.get(position).getMessage();
+            boolean sendOrReceive = message.get(position).getSOR();
+            String sendOrRec = sendOrReceive?"true":"false";
+
+            Bundle dataToPass = new Bundle();
+            dataToPass.putInt("index", position);
+            dataToPass.putLong("id", message.get(position).getId());
+            dataToPass.putString("message", title);
+            dataToPass.putString("sor", sendOrRec);
+            if(isTablet)
+            {
+                DetailFragment dFragment = new DetailFragment(); //add a DetailFragment
+                dFragment.setArguments(dataToPass); //pass it a bundle for information
+                dFragment.setTablet(true);  //tell the fragment if it's running on a tablet or not
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .add(R.id.fragmentLocation, dFragment) //Add the fragment in FrameLayout
+                        .addToBackStack("AnyName") //make the back button undo the transaction
+                        .commit(); //actually load the fragment.
+            }
+            else //isPhone
+            {
+                Intent viewIntent = new Intent(this, EmptyActivity.class);
+//                viewIntent.putExtra("message", title);
+////                viewIntent.putExtra("id", message.get(position).getId());
+////                viewIntent.putExtra("sor", sendOrRec);
+                viewIntent.putExtras(dataToPass);
+                startActivityForResult(viewIntent, 50);
+            }
+        });
+
         //Send button
         Button sendButton = findViewById(R.id.button1_chat);
+
         //Recieve button
         Button recieveButton = findViewById(R.id.button2_chat);
+
         //Chat text
         EditText chatText = findViewById(R.id.edit_chat);
 
@@ -113,6 +146,7 @@ public class ChatRoomActivity extends AppCompatActivity{
         });
 
 
+
     }
 
     public Cursor runQuery (String[] columns) {
@@ -141,7 +175,6 @@ public class ChatRoomActivity extends AppCompatActivity{
         }
     }
 
-
     public class MyListAdapter extends BaseAdapter {
 
         @Override
@@ -158,13 +191,13 @@ public class ChatRoomActivity extends AppCompatActivity{
             View thisRow = messView;
             if (getItem(position).getSOR()) {
                 thisRow = getLayoutInflater().inflate(R.layout.send_row, null);
-                ImageButton sendImg = thisRow.findViewById(R.id.sendImg);
+                ImageView sendImg = thisRow.findViewById(R.id.sendImg);
                 TextView sendText = thisRow.findViewById(R.id.sendText);
                 sendText.setText(getItem(position).getMessage());
             }
             else if(!getItem(position).getSOR()) {
                 thisRow = getLayoutInflater().inflate(R.layout.receive_row, null);
-                ImageButton recImg = thisRow.findViewById(R.id.recImg);
+                ImageView recImg = thisRow.findViewById(R.id.recImg);
                 TextView recText = thisRow.findViewById(R.id.recText);
                 recText.setText(getItem(position).getMessage());
             }
@@ -176,6 +209,27 @@ public class ChatRoomActivity extends AppCompatActivity{
             return getItem(position).getId();
         }
     }
+    //This function only gets called on the phone. The tablet never goes to a new activity
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 50)
+        {
+            if(resultCode == RESULT_OK) //if you hit the delete button instead of back button
+            {
+                int index = data.getIntExtra("index", 0);
+                deleteMessageId(index);
+            }
+        }
+    }
 
+    public void deleteMessageId(int index)
+    {
+        MyDatabaseOpenHelper db = new MyDatabaseOpenHelper(this);
+        db.deleteMess(String.valueOf(message.get(index).getId()));
+        message.remove(index);
+        myAdapter.notifyDataSetChanged();
+
+    }
 
 }
